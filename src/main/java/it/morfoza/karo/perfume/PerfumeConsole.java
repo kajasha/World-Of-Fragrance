@@ -1,9 +1,11 @@
+package it.morfoza.karo.perfume;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Perfume {
-    public static void main(String[] args) {
+public class PerfumeConsole {
+    public static void mainConsole(String[] args) {
 
         List<Fragrance> allPerfume = new ArrayList<>();
         allPerfume.add(new Fragrance("Calvin Kleine Euphoria", "Głowa- zielona nuta, owoc granatu, kaki Serce - lotos, orchidea, Podstawa - piżmo, mahoń, nuty śmietany, bursztyn, fiołek"));

@@ -1,3 +1,5 @@
+package it.morfoza.karo.perfume;
+
 public class Fragrance {
 
     String name;
@@ -8,5 +10,5 @@ public class Fragrance {
         this.ingredients = ingredients;
     }
 
-    public String toString() { return "Fragrance: "+ name + ingredients + "";}
+    public String toString() { return "it.morfoza.karo.perfume.Fragrance: "+ name + ingredients + "";}
 }
