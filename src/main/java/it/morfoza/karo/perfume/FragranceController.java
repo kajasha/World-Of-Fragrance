@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FragranceController {
 
 
-    @RequestMapping("/fragrance")
+    @RequestMapping("/")
     public String fragrance() { return "fragrance"; }
 
 
