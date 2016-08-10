@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class FragranceController {
 
+
+    @RequestMapping("/fragrance")
+    public String fragrance() { return "fragrance"; }
+
+
     @RequestMapping("/worldoffragrance")
     public String worldoffragrance(
-            @RequestParam("search") Integer search,
+            @RequestParam(value = "search") String search,
             @RequestParam(value = "operation", required = false, defaultValue = "search") String operation, Model model) {
 
         String result ="Tu byłam! Karolina!";
