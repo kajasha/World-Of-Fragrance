@@ -27,15 +27,17 @@ public class FragranceController {
     public String worldoffragrance(
             @RequestParam(value = "search") String search,
             @RequestParam(value = "operation", required = false, defaultValue = "search") String operation, Model model) {
-
         List<Fragrance> matchingPerfume = advisor.findMatchingPerfume(search);
         if (matchingPerfume.isEmpty()) {
-            return "redirect:/newfragrance";
+            return "redirect:/fragrancenotfound";
         }
-
         model.addAttribute("resultOfOperation", matchingPerfume);
         return "result";
+    }
 
+    @RequestMapping("/fragrancenotfound")
+    public String fragranceNotFound() {
+        return "fragranceNotFound";
     }
 
 
