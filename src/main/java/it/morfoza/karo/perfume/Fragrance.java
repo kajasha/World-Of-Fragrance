@@ -24,5 +24,13 @@ public class Fragrance {
             return false;
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
 }
 
