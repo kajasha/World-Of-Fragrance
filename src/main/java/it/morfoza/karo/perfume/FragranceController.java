@@ -27,7 +27,13 @@ public class FragranceController {
     public String worldoffragrance(
             @RequestParam(value = "search") String search,
             @RequestParam(value = "operation", required = false, defaultValue = "search") String operation, Model model) {
-        model.addAttribute("resultOfOperation", advisor.findMatchingPerfume(search));
+
+        List<Fragrance> matchingPerfume = advisor.findMatchingPerfume(search);
+        if (matchingPerfume.isEmpty()) {
+            return "redirect:/newfragrance";
+        }
+
+        model.addAttribute("resultOfOperation", matchingPerfume);
         return "result";
 
     }
