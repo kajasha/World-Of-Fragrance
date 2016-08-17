@@ -3,12 +3,26 @@ package it.morfoza.karo.perfume;
 public class Fragrance {
 
     String name;
-    String ingredients;
+    public String ingredients;
 
     public Fragrance(String name, String ingredients) {
         this.name = name;
         this.ingredients = ingredients;
     }
 
-    public String toString() { return "it.morfoza.karo.perfume.Fragrance: "+ name + ingredients + "";}
+    public String toString() {
+        return "it.morfoza.karo.perfume.Fragrance: " + name + ingredients + "";
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        Fragrance fragrance1 = this;
+        Fragrance fragrance2 = (Fragrance) object;
+        if (fragrance1.name.equals(fragrance2.name)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
