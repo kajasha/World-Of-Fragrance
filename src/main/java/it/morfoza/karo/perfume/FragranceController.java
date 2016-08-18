@@ -51,9 +51,15 @@ public class FragranceController {
      {
          advisor.addFragrance(new Fragrance(getName, getIngredients));
 
-         model.addAttribute("getName", getName);
-         model.addAttribute("getIngredients", getIngredients);
         return "createNewFragrance";
     }
 
+
+    @RequestMapping("/all")
+    public String all(
+            ModelMap model)
+    {
+        model.addAttribute("allPerfumes", advisor.findMatchingPerfume(""));
+        return "allPerfumes";
+    }
 }
