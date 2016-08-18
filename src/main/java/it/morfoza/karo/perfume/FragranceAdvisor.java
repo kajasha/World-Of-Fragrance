@@ -4,4 +4,7 @@ import java.util.List;
 
 public interface FragranceAdvisor {
     List<Fragrance> findMatchingPerfume(String search);
+
+    void addFragrance(Fragrance fragrance);
+
 }
