@@ -3,10 +3,18 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    p {
+        width: 500px;
+    }
+</style>
 </head>
 <body>
 all perfume
-<p th:text=" ${allPerfumes}" >
+<p th:each="fragrance: ${allPerfumes}" >
+    <span  th:text="${fragrance.name}"></span>
+    : [<span th:text="${fragrance.ingredients}"></span>]
+
 </p>
 
 </body>
