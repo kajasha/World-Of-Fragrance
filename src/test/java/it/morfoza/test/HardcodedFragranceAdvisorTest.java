@@ -23,7 +23,7 @@ public class HardcodedFragranceAdvisorTest {
 
         List<Fragrance> allMatchPerfume = new ArrayList<>();
         for (Fragrance fragrance : allPerfume) {
-            if (fragrance.ingredients.contains(search)) {
+            if (fragrance.matches(search)) {
                 allMatchPerfume.add(fragrance);
             }
 

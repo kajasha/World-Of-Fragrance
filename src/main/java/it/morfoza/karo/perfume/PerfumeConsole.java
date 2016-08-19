@@ -24,7 +24,7 @@ public class PerfumeConsole {
 
         List<Fragrance> allMatchPerfume = new ArrayList<>();
         for (Fragrance fragrance: allPerfume) {
-            if (fragrance.ingredients.contains(ingredients)) {
+            if (fragrance.matches(ingredients)) {
                 allMatchPerfume.add(fragrance);
             }
         }

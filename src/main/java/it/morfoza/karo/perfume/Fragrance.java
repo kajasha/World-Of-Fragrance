@@ -2,8 +2,8 @@ package it.morfoza.karo.perfume;
 
 public class Fragrance {
 
-    String name;
-    public String ingredients;
+    private String name;
+    private String ingredients;
 
     public Fragrance(String name, String ingredients) {
         this.name = name;
@@ -31,6 +31,14 @@ public class Fragrance {
 
     public String getIngredients() {
         return ingredients;
+    }
+
+    public boolean matches(String search) {
+        if (name.contains(search) || ingredients.contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
