@@ -1,33 +1,45 @@
 package it.morfoza.test;
 
 import it.morfoza.karo.perfume.Fragrance;
+import it.morfoza.karo.perfume.HardcodedFragranceAdvisor;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+
 public class HardcodedFragranceAdvisorTest {
 
     @Test
-    public void should() {
+    public void shouldNotFindPerfumeThatItNotOnTheList() {
+        // Given
 
-        String search = null;
+        HardcodedFragranceAdvisor advisor = new HardcodedFragranceAdvisor();
 
-        List<Fragrance> allPerfume = new ArrayList<>();
-        allPerfume.add(new Fragrance("Calvin Kleine Euphoria", "Głowa- zielona nuta, owoc granatu, kaki Serce - lotos, orchidea, Podstawa - piżmo, mahoń, nuty śmietany, bursztyn, fiołek"));
-        allPerfume.add(new Fragrance("Calvin Kleine IN2U", "Głowa - różowy grapefruit, liście czarnej porzeczki, bergamotka sycylijska, Serce - kaktus, orchidea, Podstawa - cedr, bursztyn, wanilia"));
-        allPerfume.add(new Fragrance("DKNY Be Delicious", "Głowa - grejpfrut, ogórek, magnolia, Serce - róża, konwalia, tuberoza, fiołek, zielone jabłko, Podstawa - bursztyn, drzewo sandałowe, nuty drzew"));
-        allPerfume.add(new Fragrance("Giorgio Armani", "Głowa - liście czarnej porzeczki, Serce - frezja, róża, Podstawa - wanilia, ambroxan, paczuli, nuty drzew"));
-        allPerfume.add(new Fragrance("Calvin Kleine Summer", "Głowa - cytryna, mojito, zielone jabłko, imbir, limonka, Serce - jałowiec, Tahitiańska gardenia, guajawa, Podstawa - mleczko kokosowe, cedr, mech"));
+        // When
+        List<Fragrance> fragrances = advisor.findMatchingPerfume("tralala");
 
-        List<Fragrance> allMatchPerfume = new ArrayList<>();
-        for (Fragrance fragrance : allPerfume) {
-            if (fragrance.matches(search)) {
-                allMatchPerfume.add(fragrance);
-            }
 
-        }
+        // Then
+        assertTrue(fragrances.isEmpty());
+    }
 
+    @Test
+    public void shouldFindPerfumeThatItOnTheList() {
+        // Given
+
+        HardcodedFragranceAdvisor advisor = new HardcodedFragranceAdvisor();
+        Fragrance fragrance = new Fragrance("tralala", "skarpetki, cebula");
+        advisor.addFragrance(fragrance);
+
+
+        // When
+        List<Fragrance> fragrances = advisor.findMatchingPerfume("tralala");
+
+
+        // Then
+        assertTrue(fragrances.contains(fragrance));
     }
 }
