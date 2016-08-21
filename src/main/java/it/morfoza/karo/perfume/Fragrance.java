@@ -41,7 +41,7 @@ public class Fragrance {
         }
     }
 
-    public String[] getIngriditensTable() {
+    public String[] getIngredientsTable() {
         return ingredients.split(",");
     }
 }
