@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +24,15 @@ public class FragranceController {
     }
 
     @RequestMapping("/")
-    public String fragrance() { return "fragrance"; }
+    public String fragrance() {
+        return "fragrance";
+    }
 
 
     @RequestMapping("/worldoffragrance")
     public String worldoffragrance(
-             @RequestParam(name = "search") String search,
-             Model model) {
+            @RequestParam(name = "search") String search,
+            Model model) {
         List<Fragrance> matchingPerfumes = advisor.findMatchingPerfume(search);
         if (matchingPerfumes.isEmpty()) {
             return "redirect:/fragrancenotfound";
@@ -38,8 +42,8 @@ public class FragranceController {
     }
 
     @RequestMapping("/fragrancenotfound")
-    public String fragranceNotFound()
-     {
+    public String fragranceNotFound(@RequestParam(name = "error", required = false) String error, ModelMap model) {
+        model.addAttribute("error", error);
         return "fragranceNotFound";
     }
 
@@ -47,19 +51,31 @@ public class FragranceController {
     public String createnewfragrance(
             @RequestParam(name = "getName", required = true) String getName,
             @RequestParam(name = "getIngredients", required = true) String getIngredients,
-            ModelMap model)
-     {
-         advisor.addFragrance(new Fragrance(getName, getIngredients));
+            ModelMap model) {
+        if (getName.length() < 2) {
+            String error = encode("Zbyt krótka nazwa");
+            return "redirect:/fragrancenotfound?error=" + error;
+        }
 
+        advisor.addFragrance(new Fragrance(getName, getIngredients));
         return "createNewFragrance";
+
     }
 
 
     @RequestMapping("/all")
     public String all(
-            ModelMap model)
-    {
+            ModelMap model) {
         model.addAttribute("allPerfumes", advisor.findMatchingPerfume(""));
         return "allPerfumes";
     }
+
+    private String encode(String text) {
+        try {
+            return URLEncoder.encode(text, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

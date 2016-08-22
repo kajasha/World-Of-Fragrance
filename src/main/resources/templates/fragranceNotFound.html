@@ -41,6 +41,9 @@
         box-shadow: 0 1px 1px rgba(0,0,0,0.1);
         color: #222;
     }
+    p {
+
+    }
 
 </style>
 
@@ -48,11 +51,15 @@
  Niestety nie znaleziono tego, czego szukasz. Możesz teraz samodzielnie dodać nowe propozycje - dzięki Tobie powiększymy naszą bazę zapachów : )
 
 <form action="/createnewfragrance">
-    <input name="getName" />Podaj nazwę perfum<br />
-    <input name="getIngredients" />Podaj ich skład
+    <p>Podaj nazwę perfum</p>
+    <input name="getName" />
+    <p>Podaj ich sklad</p>
+    <input name="getIngredients" /> <br>
     <input type="submit" value="add"/>
 
 </form>
 
 </body>
+
+<h2 th:text="${error}" class="error"></h2>
 </html>
