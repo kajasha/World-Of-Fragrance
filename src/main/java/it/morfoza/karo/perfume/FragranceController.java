@@ -59,15 +59,15 @@ public class FragranceController {
 
         advisor.addFragrance(new Fragrance(getName, getIngredients));
 
-        return "createNewFragrance";
+        return "redirect:/newfragrance";
     }
 
 
-//        @RequestMapping("/newfragrance")
-//    public String newfragrance () {
-//        return "newFragrance";
-//
-//    }
+        @RequestMapping("/newfragrance")
+    public String newfragrance () {
+        return "createNewFragrance";
+
+    }
 
 
     @RequestMapping("/all")
