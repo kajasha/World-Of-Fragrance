@@ -14,6 +14,8 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -119,14 +121,21 @@ public class FragranceControllerTest {
 
     @Test
     public void shouldCheckFindMatchingPerfumeOnAdvisor() {
+
+        // given
         FragranceAdvisor advisor = mock(FragranceAdvisor.class);
         FragranceController fc = new FragranceController(advisor);
 
-        when(advisor.findMatchingPerfume("qwa")).thenReturn(any());
+        Model model = mock(Model.class);
+        List<Fragrance> fragrancesList = mock(List.class);
 
-        ModelMap model = mock(ModelMap.class);
+        when(advisor.findMatchingPerfume("")).thenReturn(fragrancesList);
 
-        String view = fc.all(ModelMap, model.addAttribute("", ""));
+        // when
+        fc.all(model);
+
+        // then
+        verify(model).addAttribute("allPerfumes", fragrancesList);
 
 
     }

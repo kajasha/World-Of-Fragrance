@@ -73,7 +73,7 @@ public class FragranceController {
 
     @RequestMapping("/all")
     public String all(
-            ModelMap model) {
+            Model model) {
         model.addAttribute("allPerfumes", advisor.findMatchingPerfume(""));
         return "allPerfumes";
     }
