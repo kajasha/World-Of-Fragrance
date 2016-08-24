@@ -27,8 +27,6 @@ public class HardcodedFragranceAdvisor implements FragranceAdvisor {
             if (fragrance.matches(search)) {
                 allMatchPerfume.add(fragrance);
             }
-
-
         }
         return allMatchPerfume;
     }
@@ -36,5 +34,10 @@ public class HardcodedFragranceAdvisor implements FragranceAdvisor {
     @Override
     public void addFragrance(Fragrance fragrance) {
         fragrances.add(fragrance);
+    }
+
+    @Override
+    public List<Fragrance> getAllPerfumes() {
+        return null;
     }
 }

@@ -127,9 +127,9 @@ public class FragranceControllerTest {
         FragranceController fc = new FragranceController(advisor);
 
         Model model = mock(Model.class);
-        List<Fragrance> fragrancesList = mock(List.class);
+        List<Fragrance> fragrancesList = createListWithSomeProducts();
 
-        when(advisor.findMatchingPerfume("")).thenReturn(fragrancesList);
+        when(advisor.getAllPerfumes()).thenReturn(fragrancesList);
 
         // when
         fc.all(model);
@@ -138,5 +138,11 @@ public class FragranceControllerTest {
         verify(model).addAttribute("allPerfumes", fragrancesList);
 
 
+    }
+
+    private List<Fragrance> createListWithSomeProducts() {
+        List<Fragrance> fragrancesList = new ArrayList<>();
+        fragrancesList.add(new Fragrance("Zdzichu Boss", "lawenda"));
+        return fragrancesList;
     }
 }

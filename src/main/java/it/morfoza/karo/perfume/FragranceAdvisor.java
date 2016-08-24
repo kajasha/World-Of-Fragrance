@@ -7,4 +7,5 @@ public interface FragranceAdvisor {
 
     void addFragrance(Fragrance fragrance);
 
+    List<Fragrance> getAllPerfumes();
 }
