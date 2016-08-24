@@ -3,6 +3,7 @@ package it.morfoza.test;
 import it.morfoza.karo.perfume.Fragrance;
 import it.morfoza.karo.perfume.FragranceAdvisor;
 import it.morfoza.karo.perfume.FragranceController;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -104,5 +105,29 @@ public class FragranceControllerTest {
 
 
         verify(advisor).addFragrance(new Fragrance("aaa", "bbb"));
+    }
+
+    @Test
+    public void shouldCheckNewFragrance() {
+        FragranceAdvisor advisor = mock(FragranceAdvisor.class);
+        FragranceController ff = new FragranceController(advisor);
+
+        String result = ff.newfragrance();
+
+        assertEquals("createNewFragrance", result);
+    }
+
+    @Test
+    public void shouldCheckFindMatchingPerfumeOnAdvisor() {
+        FragranceAdvisor advisor = mock(FragranceAdvisor.class);
+        FragranceController fc = new FragranceController(advisor);
+
+        when(advisor.findMatchingPerfume("qwa")).thenReturn(any());
+
+        ModelMap model = mock(ModelMap.class);
+
+        String view = fc.all(ModelMap, model.addAttribute("", ""));
+
+
     }
 }
