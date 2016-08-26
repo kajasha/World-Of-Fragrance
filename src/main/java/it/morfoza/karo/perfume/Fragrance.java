@@ -4,14 +4,16 @@ public class Fragrance {
 
     private String name;
     private String ingredients;
+    private String type;
 
-    public Fragrance(String name, String ingredients) {
+    public Fragrance(String name, String ingredients, String type) {
         this.name = name;
         this.ingredients = ingredients;
+        this.type = type;
     }
 
     public String toString() {
-        return "it.morfoza.karo.perfume.Fragrance: " + name + ingredients + "";
+        return "it.morfoza.karo.perfume.Fragrance: " + name + ingredients + type ;
     }
 
     @Override
@@ -33,6 +35,8 @@ public class Fragrance {
         return ingredients;
     }
 
+    public String getType() { return type; }
+
     public boolean matches(String search) {
         if (name.contains(search) || ingredients.contains(search)) {
             return true;
@@ -45,4 +49,5 @@ public class Fragrance {
         return ingredients.split(",");
     }
 }
+
 

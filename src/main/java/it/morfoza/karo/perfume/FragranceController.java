@@ -50,13 +50,17 @@ public class FragranceController {
     @RequestMapping("/createnewfragrance")
     public String createnewfragrance(
             @RequestParam(name = "getName", required = true) String getName,
-            @RequestParam(name = "getIngredients", required = true) String getIngredients) {
+            @RequestParam(name = "getIngredients", required = true) String getIngredients,
+            @RequestParam(name = "getType", required = true) String getType)
+
+    {
         if (getName.length() < 2) {
             String error = encode("Zbyt krótka nazwa");
             return "redirect:/fragrancenotfound?error=" + error;
         }
 
-        Fragrance fragrance = new Fragrance(getName, getIngredients);
+
+        Fragrance fragrance = new Fragrance(getName, getIngredients, getType);
         advisor.addFragrance(fragrance);
 
         return "redirect:/newfragrance";

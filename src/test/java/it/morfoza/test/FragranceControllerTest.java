@@ -76,7 +76,7 @@ public class FragranceControllerTest {
         //when
 
 
-        String view = fragranceController.createnewfragrance("a", "b");
+        String view = fragranceController.createnewfragrance("a", "b", "c");
 
         //then
         assertEquals("redirect:/fragrancenotfound?error=Zbyt+kr%C3%B3tka+nazwa", view);
@@ -90,7 +90,7 @@ public class FragranceControllerTest {
 
         //when
 
-        String view = f.createnewfragrance("aaa", "bbb");
+        String view = f.createnewfragrance("aaa", "bbb", "ccc");
 
         //then
 
@@ -103,10 +103,10 @@ public class FragranceControllerTest {
         FragranceController f = new FragranceController(advisor);
 
 
-        String view = f.createnewfragrance("aaa", "bbb");
+        String view = f.createnewfragrance("aaa", "bbb", "ccc");
 
 
-        verify(advisor).addFragrance(new Fragrance("aaa", "bbb"));
+        verify(advisor).addFragrance(new Fragrance("aaa", "bbb", "ccc"));
     }
 
     @Test
@@ -142,7 +142,7 @@ public class FragranceControllerTest {
 
     private List<Fragrance> createListWithSomeProducts() {
         List<Fragrance> fragrancesList = new ArrayList<>();
-        fragrancesList.add(new Fragrance("Zdzichu Boss", "lawenda"));
+        fragrancesList.add(new Fragrance("Zdzichu Boss", "lawenda", "m"));
         return fragrancesList;
     }
 }

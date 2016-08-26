@@ -31,7 +31,7 @@ public class HardcodedFragranceAdvisorTest {
         // Given
 
         HardcodedFragranceAdvisor advisor = new HardcodedFragranceAdvisor();
-        Fragrance fragrance = new Fragrance("tralala", "skarpetki, cebula");
+        Fragrance fragrance = new Fragrance("tralala", "skarpetki, cebula", "gender");
         advisor.addFragrance(fragrance);
 
 
